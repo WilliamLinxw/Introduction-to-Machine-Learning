@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-def read_Y_X(filename):
+def read_X_Y(filename):
     train = pd.read_csv('./'+filename)
     print(train.head(10))
     X = train.iloc[:,2:].values
