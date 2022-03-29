@@ -1,4 +1,5 @@
 from cmath import sqrt
+from turtle import shape
 from bitarray import test
 import numpy as np
 import pandas as pd
@@ -8,12 +9,15 @@ import csv
 def readxy(filename):
     train = pd.read_csv('./'+filename)
     print(train.head(10))
+    train = train.sample(frac=1, random_state=1).reset_index(drop=True)
+    print(train.head(10))
     X = train.iloc[:,1:].values
     Y = train.iloc[:,0:1].values
     return X, Y
 
 X, Y = readxy('train.csv')
-train_Y = np.delete(Y, slice(0,None,10), 0)
+print(X.shape)
+print(Y.shape)
 
 def fold(X, Y, n, alpha):
     error = 0
@@ -31,8 +35,8 @@ def fold(X, Y, n, alpha):
         SE = 0
         for j in range(len(test_Y)):
             y_hat = np.dot(reg.coef_, test_X[j]) + reg.intercept_
-            print('y_hat', y_hat)
-            print('test y', test_Y[j])
+            # print('y_hat', y_hat)
+            # print('test y', test_Y[j])
             SE = SE + (test_Y[j] - y_hat)**2
         MSE = SE / len(test_Y)
         RMSE = MSE**0.5
