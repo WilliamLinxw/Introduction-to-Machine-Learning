@@ -17,7 +17,7 @@ With the data read from the file, I performed the required feature design by man
 
 I then used the LinearRegression class provided by sklearn to perform the training. Because the last feature is a constantand the method will also returen the intercept after training, I dropped the last feature during training. After training, I added the intercept back into the trained parameter for the constant feature and report the corresponding coefficients.
 
-# Task 2
+## Task 2
 This project mainly consists of data manipulation and model selection and training. All the testing codes are included in the latter part of the submitted code, indicated by the comment cell '''Production Code during testing'''. Run the cells until this cell can reproduce the prediction.
 
 I averaged the twelve tests for one patient and used KNN for data imputation. This algorithm tries to impute the missing data based on k other samples with a value for the feature and the nearest Euclidean distance. The lost data is computed by averaging the neighbor's existing data. Our final solution also has built-in support for missing data.
